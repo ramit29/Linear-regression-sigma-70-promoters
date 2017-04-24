@@ -2,7 +2,6 @@ from __future__ import division
 import numpy as np
 from pylab import plot, show, xlabel, ylabel
 import random
-import dnaplotlib
 import web
 from Bio import motifs
 from Bio.Seq import Seq
