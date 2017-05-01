@@ -7,7 +7,7 @@ from Bio import motifs
 from Bio.Seq import Seq
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-
+from sklearn.preprocessing import scale
 
 #from bs4 import BeautifulSoup
 import time
@@ -21,7 +21,7 @@ def gradientDescent(x, y, theta, alpha, m, numIterations):
         # avg cost per example (the 2 in 2*m doesn't really matter here.
         # But to be consistent with the gradient, I include it)
         cost = np.sum(loss ** 2) / (2 * m)
-        print("Iteration %d | Cost: %f" % (i, cost))
+        #print("Iteration %d | Cost: %f" % (i, cost))
         # avg gradient per example
         gradient = np.dot(xTrans, loss) / m
         # update
@@ -604,10 +604,15 @@ print ""
 #print y1
 #print x1
 #print type(x1)
+"""x,y = scale(x), y
+print(x)
+print(y)
+"""
 m, n = np.shape(x)
-numIterations= 100
+numIterations= 1000000
 alpha = 0.0005
 theta = np.ones(n)
+
 theta, J_history = gradientDescent(x, y, theta, alpha,m,numIterations)
 print "theta"
 print(theta)
@@ -662,7 +667,22 @@ xlabel('Iterations')
 ylabel('Cost Function')
 show()
 
-strength = np.array([1.0,  ((8.5 - mean_r[1]) / std_r[1]), ((8.2 - mean_r[2]) / std_r[2])]).dot(theta)
+print theta
+
+"""
+strength = np.array([1.0,  ((7.608 - mean_r[1]) / std_r[1]), ((5.572 - mean_r[2]) / std_r[2])]).dot(theta)
 print 'Predicted strength of promoter : %f' % (strength)
+"""
+meany = np.mean(y)
+print meany
+
+sumsqmeany = np.sum((y - meany)**2)
+print sumsqmeany
+
+sumsqmeanysum = np.sum((y - hx)**2)/sumsqmeany
+
+R = 1 - sumsqmeanysum
+print "The R value is:"
+print R
 
 
