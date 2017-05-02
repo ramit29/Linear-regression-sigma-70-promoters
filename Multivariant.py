@@ -669,10 +669,6 @@ show()
 
 print theta
 
-"""
-strength = np.array([1.0,  ((7.608 - mean_r[1]) / std_r[1]), ((5.572 - mean_r[2]) / std_r[2])]).dot(theta)
-print 'Predicted strength of promoter : %f' % (strength)
-"""
 meany = np.mean(y)
 print meany
 
