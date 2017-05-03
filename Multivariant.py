@@ -639,7 +639,7 @@ print "Cost function"
 temp = 1/(2*m)
 cost = temp*sum
 print cost
-X_norm, mean_r, std_r = feature_normalize(x)
+#X_norm, mean_r, std_r = feature_normalize(x)
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 n = 100
@@ -669,6 +669,10 @@ show()
 
 print theta
 
+
+strength = np.array([1.0,  2, 3]).dot(theta)
+print 'Predicted strength of promoter : %f' % (strength)
+
 meany = np.mean(y)
 print meany
 
@@ -679,6 +683,4 @@ sumsqmeanysum = np.sum((y - hx)**2)/sumsqmeany
 
 R = 1 - sumsqmeanysum
 print "The R value is:"
-print R
-
-
+print R 
