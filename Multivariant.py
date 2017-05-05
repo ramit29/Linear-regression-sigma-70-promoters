@@ -8,7 +8,7 @@ from Bio.Seq import Seq
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from sklearn.preprocessing import scale
-
+from mpl_toolkits.mplot3d import Axes3D
 #from bs4 import BeautifulSoup
 import time
 
@@ -371,7 +371,7 @@ Seq(s)
 
 m2 = motifs.create(instances2)
 print(m2.counts);
-pwm2 = m2.counts.normalize(pseudocounts=0.5)
+pwm2 = m2.counts.normalize(pseudocounts=0.8)
 print(pwm2)
 pssm2 = pwm2.log_odds()
 print(pssm2)
@@ -610,7 +610,7 @@ print(y)
 """
 m, n = np.shape(x)
 numIterations= 1000000
-alpha = 0.0005
+alpha = 0.015
 theta = np.ones(n)
 
 theta, J_history = gradientDescent(x, y, theta, alpha,m,numIterations)
@@ -640,6 +640,7 @@ temp = 1/(2*m)
 cost = temp*sum
 print cost
 #X_norm, mean_r, std_r = feature_normalize(x)
+"""
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 n = 100
@@ -659,6 +660,39 @@ ax.set_ylabel('-35 hexamer')
 ax.set_zlabel('strength of promoter')
 plt.show()
 
+
+for c, m, zl, zh in [('g', '*', -50, -25)]:
+    xs = x[:,1]
+    print "xs"
+    print (xs)
+    ys = x[:,2]
+    print "ys"
+    print(ys)
+    zs = y
+    print"zs"
+    print(zs)
+    ax.scatter(xs, ys, zs, c=c, marker=m)
+"""
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+for c, m in [('r', 'o')]:
+    xs = x[:,1]
+    #xs = x[i,1]
+    print "xs"
+    print (xs)
+    ys = x[:,2]
+    #ys = x[i,2]
+    print "ys"
+    print(ys)
+    zs = y
+    print"zs"
+    print(zs)
+    ax.scatter(xs, ys, zs, c=c, marker=m)
+
+ax.set_xlabel('-10 hexamer')
+ax.set_ylabel('-35 hexamer')
+ax.set_zlabel('strength of promoter')
+plt.show()
 #theta = zeros(shape=(3, 1))
 
 print theta, J_history
@@ -670,7 +704,7 @@ show()
 print theta
 
 
-strength = np.array([1.0,  2, 3]).dot(theta)
+strength = np.array([1.0,  8.50, 7.94 ]).dot(theta)
 print 'Predicted strength of promoter : %f' % (strength)
 
 meany = np.mean(y)
@@ -684,3 +718,4 @@ sumsqmeanysum = np.sum((y - hx)**2)/sumsqmeany
 R = 1 - sumsqmeanysum
 print "The R value is:"
 print R 
+
