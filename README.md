@@ -8,4 +8,6 @@ Their pssm was calculated and normalized as the two inputs.
 
 Multivariant.py is the final code.
 
+The optimised R-squared value(co-efficient of determination) was calculated to be 0.44 at a learning rate of 0.015 when gradient descent ran 1000000 times.
+
 Another model will be generated soon  which doesn't use pssm, but frequence scores.
