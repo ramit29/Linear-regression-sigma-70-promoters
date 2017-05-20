@@ -7,7 +7,6 @@ from Bio import motifs
 from Bio.Seq import Seq
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from sklearn.preprocessing import scale
 from mpl_toolkits.mplot3d import Axes3D
 #from bs4 import BeautifulSoup
 import time
